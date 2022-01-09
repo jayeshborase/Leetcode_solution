@@ -2,7 +2,6 @@ class Solution {
 public:
     vector<vector<int>> generate(int numRows) {
         vector<vector<int>> v;
-        //vector<int> t(1,1);
         v.push_back({1});
         
         for(int i = 1; i < numRows; i++){
