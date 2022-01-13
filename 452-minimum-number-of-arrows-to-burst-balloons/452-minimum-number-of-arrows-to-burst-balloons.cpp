@@ -3,13 +3,10 @@ public:
     int findMinArrowShots(vector<vector<int>>& points) {
         int si = points.size();
         sort(points.begin(),points.end());
-        for(auto x:points){
-            cout << "[" << x[0] << " " << x[1] << "]\t";
-        }
-        
+       
         int i = 0;
         int count = 0;
-        vector<pair<int,int>> v;
+        //vector<pair<int,int>> v;
         while(i < si){
             int le = points[i][0];
             int ri = points[i][1];
@@ -24,12 +21,10 @@ public:
             }
             cout << "\n";
             count++;
-            v.push_back({le,cri});
+            //v.push_back({le,cri});
             i++;
         }
-        for(auto x:v){
-            cout << x.first << " " << x.second << "\n";
-        }
-        return v.size();
+    
+        return count;
     }
 };
