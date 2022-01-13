@@ -11,7 +11,7 @@ public:
             int end = points[i][1];
             
             while(i < si-1 && end >= points[i+1][0]){
-                // only change here ri store minimum value
+                // only change here Xend store minimum value
                 end = min(end,points[i+1][1]);
                 i++;
             }
