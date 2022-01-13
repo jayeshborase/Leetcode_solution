@@ -1,3 +1,4 @@
+// basic Approach from insert interval 
 class Solution {
 public:
     int findMinArrowShots(vector<vector<int>>& points) {
@@ -11,8 +12,9 @@ public:
             int ri = points[i][1];
             
             while(i < si-1 && ri >= points[i+1][0]){
-                if(points[i+1][1] < ri)
-                    ri = points[i+1][1];
+                // only change here 
+                //if(points[i+1][1] < ri)
+                    ri = min(ri,points[i+1][1]);
                 i++;
             }
             count++;
