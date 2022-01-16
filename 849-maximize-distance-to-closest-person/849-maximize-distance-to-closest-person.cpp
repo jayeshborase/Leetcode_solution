@@ -18,27 +18,20 @@ public:
             if(seats[j] == 1){
                 in_r = j;
             }else{
-                // if(in_r == -1){
-                //     r[j] = j;
-                // }else
-                    r[j] = in_r;
+                r[j] = in_r;
             }
             i++;
             j--;
-        }
-        
+        } 
         int mx = -1;
-        i = 0;
-        
+        i = 0;  
         while(i < si){
             if(l[i] != -1 && r[i] != -1){
                 int mid = l[i]+(r[i]-l[i])/2;
                 mx = max(mx,min(abs(l[mid]-mid),abs(r[mid]-mid)));
             }else if(l[i] != -1){
-                //int mid = l[i]+(i-l[i])/2;
                 mx = max(mx,abs(l[i]-i));
             }else if(r[i] != -1){
-                //int mid = i+(r[i]-i)/2;
                 mx = max(mx,abs(r[i]-i));
             }
             i++;
