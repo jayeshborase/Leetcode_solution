@@ -11,7 +11,7 @@ public:
         while(i < pattern.length() && s.length() != 0){
             string a = s.substr(0,s.find(' '));
             s = s.substr(s.find(' ')+1,s.length());
-            cout << a << " -" << s << "- ";
+           
             if(p.find(pattern[i]) == p.end() && w.find(a) == w.end()){
                 p[pattern[i]] = a;
                 w[a] = pattern[i];
