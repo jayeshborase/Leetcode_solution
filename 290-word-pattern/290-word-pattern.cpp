@@ -3,29 +3,29 @@ public:
     bool wordPattern(string pattern, string s) {
         map<char,string> p;
         map<string,char> w;
-        vector<string> v;
+        //vector<string> v;
         s.push_back(' ');
-        string ans;
-        int co = 0;
-        for(int i = 0; i < s.length(); i++){
-            if(s[i] == ' '){
-                v.push_back(ans);
-                co++;
-                ans = "";
-            }else{
-                ans.push_back(s[i]);
-            }
-        }
+        // string ans;
+        // int co = 0;
+        // for(int i = 0; i < s.length(); i++){
+        //     if(s[i] == ' '){
+        //         v.push_back(ans);
+        //         co++;
+        //         ans = "";
+        //     }else{
+        //         ans.push_back(s[i]);
+        //     }
+        // }
         
-        if(co != pattern.length())
-            return false;
+        // if(co != pattern.length())
+        //     return false;
         int i = 0;
         int j = 0;
         
-        while(i < pattern.length() && j < v.size()){
+        while(i < pattern.length() && s.length() != 0){
             string a = s.substr(0,s.find(' '));
             s = s.substr(s.find(' ')+1,s.length());
-            cout << a << " ";
+            cout << a << " -" << s << "- ";
             if(p.find(pattern[i]) == p.end() && w.find(a) == w.end()){
                 p[pattern[i]] = a;
                 w[a] = pattern[i];
@@ -35,6 +35,6 @@ public:
             i++,j++;   
         }
         
-        return true;
+        return s.length() == 0 && i == pattern.length()?true:false;
     }
 };
