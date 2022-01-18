@@ -4,8 +4,6 @@ public:
         
         int si = f.size();
         int co = 0;
-        // if(si == 1)
-        //     return (f[0] == 0 && n == 1) || (f[0] == 1 && n == 0) || (f[0] == 0 && n == 0);
         
         for(int i = 0; n != 0 && i < si; i++){
             if(f[i] == 0){
