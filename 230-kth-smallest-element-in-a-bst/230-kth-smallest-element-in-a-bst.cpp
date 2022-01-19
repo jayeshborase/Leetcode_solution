@@ -16,14 +16,11 @@ public:
             return;
         solve(root->left,ans,c);
         c--;
-        if(c == 0){
+        if(c == 0)
             ans = root->val;
-        }
-        //v.push_back(root->val);
         solve(root->right,ans,c);
     }
     int kthSmallest(TreeNode* root, int k) {
-        //vector<int> v;
         int ans = 0;
         solve(root, ans, k);
         return ans;
