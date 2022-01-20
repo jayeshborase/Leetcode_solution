@@ -1,23 +1,34 @@
 class Solution {
 public:
-    int minEatingSpeed(vector<int>& piles, int h) {
-        int left = 1;
-        int right = 1000000000;
+    bool iseating(vector<int>& piles, int h, int mid){
+        int to = 0;
+        for(auto i:piles){
+            to += i/mid;
+            if(i%mid != 0) to++;
+        }
         
-        while(left <= right){
-            int mid = left + (right - left) / 2;
-            if(canEatInTime(piles, mid, h)) right = mid - 1;
-            else left = mid + 1;
-        }
-        return left;
+        return to <= h;
     }
-    bool canEatInTime(vector<int>& piles, int k, int h){
-        int hours = 0;
-        for(int pile : piles){
-            int div = pile / k;
-            hours += div;
-            if(pile % k != 0) hours++;
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int e = 0;
+        for(auto i:piles){
+            e = max(e,i);
         }
-        return hours <= h;
+        
+        int s = 1;
+        
+        int mid = s+(e-s)/2;
+        int ans = 0;
+        while(s <= e){
+            if(iseating(piles,h,mid)){
+                e = mid-1;
+                ans = mid;
+            }else
+                s = mid+1;
+            
+            mid = s+(e-s)/2;
+        }
+        
+        return mid;
     }
 };
