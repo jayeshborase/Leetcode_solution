@@ -12,12 +12,12 @@
 class Solution {
 public:
     // Approch First
-    TreeNode* solve(vector<int> &pre, int *st, vector<int> &in, int s, int e, map<int,int> &m){
+    TreeNode* solve(vector<int> &pre, int &st, vector<int> &in, int s, int e, map<int,int> &m){
         if(s > e)
             return NULL;
-        TreeNode* root = new TreeNode(pre[*st]);
-        int pos = m[pre[*st]];
-        (*st)++;
+        TreeNode* root = new TreeNode(pre[st]);
+        int pos = m[pre[st]];
+        st++;
         
         root->left = solve(pre,st,in,s,pos-1,m);
         root->right = solve(pre,st,in,pos+1,e,m);
@@ -37,6 +37,7 @@ public:
         
         return root;
     }
+    
     TreeNode* bstFromPreorder(vector<int>& pre) {
         vector<int> in = pre;
         sort(in.begin(),in.end());
