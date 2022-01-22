@@ -11,16 +11,30 @@
  */
 class Solution {
 public:
+    // Approch First
     TreeNode* solve(vector<int> &pre, int *st, vector<int> &in, int s, int e, map<int,int> &m){
         if(s > e)
             return NULL;
         TreeNode* root = new TreeNode(pre[*st]);
         int pos = m[pre[*st]];
         (*st)++;
-        //cout << st << " ";
+        
         root->left = solve(pre,st,in,s,pos-1,m);
         root->right = solve(pre,st,in,pos+1,e,m);
-        //cout << "\n";
+        
+        return root;
+    }
+    
+    // Approch 2nd
+    TreeNode* solve2(vector<int> &p, int &s, int h){
+        if(s == p.size() || p[s] > h) return NULL;
+        
+        TreeNode* root = new TreeNode(p[s]);
+        s++;
+        
+        root->left = solve2(p,s,root->val);
+        root->right = solve2(p,s,h);
+        
         return root;
     }
     TreeNode* bstFromPreorder(vector<int>& pre) {
@@ -32,6 +46,6 @@ public:
             m[in[i]] = i;
         }
         int st = 0;
-        return solve(pre,&st,in,0,in.size()-1,m);
+        return solve2(pre,st,INT_MAX);//solve(pre,st,in,0,in.size()-1,m);
     }
 };
