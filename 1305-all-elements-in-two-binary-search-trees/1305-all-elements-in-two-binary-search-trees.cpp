@@ -9,6 +9,9 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+// TC - O(n+m) + (n+m)log(n+m);
+// SC - O(n+m);
 class Solution {
 public:
     void solve(TreeNode* r1, vector<int>&v){
