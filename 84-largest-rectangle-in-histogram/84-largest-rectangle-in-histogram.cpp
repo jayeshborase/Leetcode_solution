@@ -1,67 +1,50 @@
 class Solution {
 public:
-    int largestRectangleArea(vector<int>& a) {
-        int n = a.size();
-        int max_ele = INT_MIN;
-        vector<int> left, right;
-
-        stack<pair<int,int>> l,r;
-
-        for (int i = 0; i < n; i++)
-        {
-            if (l.empty())
-            {
-                left.emplace_back(-1);
-                l.push({i,a[i]});
-                continue;
+    void rigmin(vector<int> &h, vector<int> &v){
+        stack<pair<int,int>> s;
+        
+        for(int i = h.size()-1; i >= 0; i--){
+            while(!s.empty() && s.top().first >= h[i]){
+                s.pop();
             }
-
-            while (!l.empty() && l.top().second >= a[i])
-            {
-                l.pop();
-            }
-
-            if (!l.empty())
-            {
-                left.emplace_back(l.top().first);
-            }else
-                left.emplace_back(-1);
-
-            l.push({i,a[i]});  
+            
+            if(!s.empty())
+                v.push_back(s.top().second);
+            else
+                v.push_back(h.size());
+            s.push({h[i],i});
         }
-
-        for (int i = n-1; i >=0; i--)
-        {
-            if (r.empty())
-            {
-                right.emplace_back(n);
-                r.push({i,a[i]});
-                continue;
+        reverse(v.begin(),v.end());
+    }
+    
+    void lefmin(vector<int> &h, vector<int> &v){
+        stack<pair<int,int>> s;
+        
+        for(int i = 0; i < h.size(); i++){
+            while(!s.empty() && s.top().first >= h[i]){
+                s.pop();
             }
-
-            while (!r.empty() && r.top().second >= a[i])
-            {
-                r.pop();
-            }
-
-            if (!r.empty())
-            {
-                right.emplace_back(r.top().first);
-            }else
-                right.emplace_back(n);
-
-            r.push({i,a[i]});  
+            
+            if(!s.empty())
+                v.push_back(s.top().second);
+            else
+                v.push_back(-1);
+            s.push({h[i],i});
         }
-        reverse(right.begin(),right.end());
-
-
-        for (int i = 0; i < n; i++)
-        {
-            int ans = (right[i] - (left[i] + 1)) * a[i];
-            if(max_ele < ans)
-                max_ele = ans;
+    }
+    int largestRectangleArea(vector<int>& heights) {
+        vector<int> l,r;
+        lefmin(heights,l);
+        rigmin(heights,r);
+        
+        int mx = INT_MIN;
+        
+        for(int i = 0; i < l.size(); i++){
+            int len = (r[i]-1)-(l[i]+1)+1;
+            cout << len << " ";
+            mx = max(mx,len*heights[i]);
         }
-
-        return max_ele;
+        
+        return mx;
     }
 };
