@@ -23,9 +23,9 @@ public:
         int a=edges[0][0],b=edges[0][1],ans=0;
         for(int i=1;i<edges.size();i++){
             //for(int j=1;j<edges[0].size();j++){
-                if(edges[i][1]==a)
+                if(edges[i][1]==a || edges[i][0] == a)
                     ans=a;
-                else if(edges[i][1]==b)
+                else if(edges[i][1]==b || edges[i][0] == b)
                     ans=b;
                 else
                     continue;
