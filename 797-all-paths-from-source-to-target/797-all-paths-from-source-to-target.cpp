@@ -11,11 +11,9 @@ public:
         }
     }
     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
-        vector<int> vist(graph.size(),0);
         vector<vector<int>> v;
-        vector<int> path;
-        
-        dfs(0,graph.size()-1,graph,v,path);
+     
+        dfs(0,graph.size()-1,graph,v,{});
       
         
         return v;
