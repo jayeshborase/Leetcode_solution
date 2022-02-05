@@ -1,24 +1,20 @@
 class Solution {
 public:
-    void dfs(int node, vector<vector<int>> &adj, vector<int> &vist){
+    void dfs(int node, vector<vector<int>> &adj, vector<int> &vist, int &size){
         vist[node] = 1;
         
         for(auto i : adj[node]){
             if(!vist[i]){
-                dfs(i,adj,vist);
+                dfs(i,adj,vist,--size);
             }
         }
     }
     bool canVisitAllRooms(vector<vector<int>>& rooms) {
         vector<int> vist(rooms.size(), 0);
+        int size = rooms.size();
         
-        dfs(0,rooms,vist);
+        dfs(0,rooms,vist,--size);
         
-        for(auto i : vist){
-            if(i == 0)
-                return false;
-        }
-        
-        return true;
+        return size == 0;
     }
 };
