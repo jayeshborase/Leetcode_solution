@@ -10,11 +10,9 @@ public:
         }
         out[node]--;
         df[node] = 1;
-        
         for(auto i :adj[node]){
             if(df[i]){
                 out[node]++;
-                //df[i] = 0;
                 return true;
             }else if(dfs(i,adj,out,safe,df)){
                 out[node]++;
@@ -37,9 +35,11 @@ public:
         
         vector<int> ans;
         for(int i = 0; i < graph.size(); i++){
+            cout << "\n=========\n";
             if(dfs(i,graph,out,safe,dfvist)){
                 continue;
             }
+            //cout << "\n=========\n";
             ans.push_back(i);
         }
         return ans;
