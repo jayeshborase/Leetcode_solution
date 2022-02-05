@@ -4,10 +4,10 @@ public:
         if(!safe[node]){
             return false;
         }
-        if(!out[node]){
-            safe[node] = 0;
-            return false;
-        }
+        // if(!out[node]){
+        //     safe[node] = 0;
+        //     return false;
+        // }
         out[node]--;
         df[node] = 1;
         for(auto i :adj[node]){
@@ -35,11 +35,11 @@ public:
         
         vector<int> ans;
         for(int i = 0; i < graph.size(); i++){
-            cout << "\n=========\n";
+    
             if(dfs(i,graph,out,safe,dfvist)){
                 continue;
             }
-            //cout << "\n=========\n";
+           
             ans.push_back(i);
         }
         return ans;
