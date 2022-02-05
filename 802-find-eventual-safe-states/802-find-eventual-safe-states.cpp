@@ -8,15 +8,13 @@ public:
             safe[node] = 0;
             return false;
         }
-        //if(out[node])
         out[node]--;
         df[node] = 1;
         
         for(auto i :adj[node]){
             if(df[i]){
                 out[node]++;
-                //out[i]++;
-                df[i] = 0;
+                //df[i] = 0;
                 return true;
             }else if(dfs(i,adj,out,safe,df)){
                 out[node]++;
