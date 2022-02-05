@@ -11,9 +11,9 @@ public:
     }
     bool canVisitAllRooms(vector<vector<int>>& rooms) {
         vector<int> vist(rooms.size(), 0);
-        int size = rooms.size();
+        int size = rooms.size()-1;
         
-        dfs(0,rooms,vist,--size);
+        dfs(0,rooms,vist,size);
         
         return size == 0;
     }
