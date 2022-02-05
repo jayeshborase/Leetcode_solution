@@ -8,14 +8,14 @@ public:
         //     safe[node] = 0;
         //     return false;
         // }
-        out[node]--;
+        //out[node]--;
         df[node] = 1;
         for(auto i :adj[node]){
             if(df[i]){
-                out[node]++;
+                //out[node]++;
                 return true;
             }else if(dfs(i,adj,out,safe,df)){
-                out[node]++;
+                //out[node]++;
                 return true;
             }
             
