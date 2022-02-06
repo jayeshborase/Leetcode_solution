@@ -1,10 +1,10 @@
 class Solution {
 public:
-    void remele(vector<int> &v, int s, int k){
-        for(int i = s; i < v.size()-k; i++){
-            v[i] = v[i+k];
-        }
-    }
+    // void remele(vector<int> &v, int s, int k){
+    //     for(int i = s; i < v.size()-k; i++){
+    //         v[i] = v[i+k];
+    //     }
+    // }
     int removeDuplicates(vector<int>& nums) {
 //         int si = nums.size();
 //         int s = 0;
@@ -22,11 +22,17 @@ public:
         
 //         return si;
         int len = nums.size();
+        
         if(len < 3) return len;
+        
         int i = 1,count = 1;
         for(int j=1;j<len;j++){
-            if(nums[j] == nums[j-1]) count++;
-            else count = 1;
+            
+            if(nums[j] == nums[j-1]) 
+                count++;
+            else 
+                count = 1;
+            
             if(count <= 2){
                 nums[i] = nums[j];
                 i++;
