@@ -2,7 +2,7 @@ class Solution {
 public:
     char findTheDifference(string s, string t) {
         map<char,int> m;
-        sort(t.begin(),t.end());
+        //sort(t.begin(),t.end());
         for(auto i : s){
             m[i]++;
         }
