@@ -22,6 +22,7 @@ public:
         
         return false;
     }
+    
     vector<int> findRedundantConnection(vector<vector<int>>& edges) {
         vector<vector<int>> adj(edges.size()+1);
         vector<int> vist(edges.size()+1);
