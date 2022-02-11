@@ -6,7 +6,6 @@ public:
         
         for(int i = 0; i < nums.size(); i++){
             sum += nums[i];
-            //cout << sum << " ";
             if(sum >= k){
                 ans = min(ans,(long)i+1);
             }
@@ -14,10 +13,7 @@ public:
             pair<long,long> p = {INT_MIN,INT_MIN};
             while(!d.empty() && sum-d.front().first >= k){
                 p = d.front();
-                //sum -= d.front().first;
                 d.pop_front();
-                
-                 //cout << " -" << sum  << " " << d.front().first << " lo";
             }
             if(p.second != INT_MIN){
                 ans = min(ans, i-p.second);
