@@ -6,7 +6,6 @@ public:
         
         for(auto i : wordList){
             s.insert(i);
-            //cout << i << " ";
         }
         
         q.push(beginWord);
@@ -26,9 +25,7 @@ public:
                     for(int m ='a'; m <= 'z'; m++){
                         string arr = word;
                         arr[j] = (char) m;
-                        //cout << arr << " ";
                         if(s.find(arr) != s.end()){
-                            //cout << arr << " ";
                             q.push(arr);
                             s.erase(arr);
                         }
