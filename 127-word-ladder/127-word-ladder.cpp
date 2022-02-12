@@ -22,8 +22,8 @@ public:
                     return changes;
                 
                 for(int j = 0; j < word.size(); j++){
+                    string arr= word;
                     for(int m ='a'; m <= 'z'; m++){
-                        string arr = word;
                         arr[j] = (char) m;
                         if(s.find(arr) != s.end()){
                             q.push(arr);
