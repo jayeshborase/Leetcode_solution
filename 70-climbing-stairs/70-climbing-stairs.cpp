@@ -12,10 +12,15 @@ public:
     }
     
     int climbStairs(int n) {
-        vector<int> dp(n+1,1);
+        //vector<int> dp(n+1,1);
+        int climp, pre1 = 1, pre2 = 1;
         for(int i = 2; i <= n; i++){
-            dp[i] = dp[i-1]+dp[i-2];
+            //dp[i] = dp[i-1]+dp[i-2];
+            climp = pre1 + pre2;
+            
+            pre2 = pre1;
+            pre1 = climp;
         }
-        return dp[n];
+        return pre1;//dp[n];
     }
 };
