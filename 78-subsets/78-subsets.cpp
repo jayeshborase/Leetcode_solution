@@ -9,15 +9,12 @@ public:
         solve(n+1,nums,ans,out);
         
         out.push_back(nums[n]);
-        
         solve(n+1,nums,ans,out);
-        
         out.pop_back();
     } 
     vector<vector<int>> subsets(vector<int>& nums) {
         vector<vector<int>> ans;
         vector<int> out;
-        
         solve(0,nums,ans,out);
         
         return ans;
