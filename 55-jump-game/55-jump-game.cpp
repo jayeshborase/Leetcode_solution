@@ -16,8 +16,8 @@ public:
         
         for(int i = in+1; i <= in+nums[in]; i++){
             if(jump(nums,i,dp)){
-                dp[i-1] = 1;
-                return dp[i-1];
+                dp[in] = 1;
+                return dp[in];
             }
         }
         
@@ -29,8 +29,18 @@ public:
         if(nums.size() == 1)
             return true;
         
-        vector<int> dp(nums.size(),-1);
+        vector<int> dp(nums.size()+1,-1);
+//         dp[0] = 1;
+//         for(int i = 0; i < nums.size()-1; i++){
+//             for(int j = i+1;  j <= i+nums[i]; j++){
+//                 if(j < nums.size() && dp[j-1]){
+//                     dp[j] = 1; 
+//                     //break;
+//                 }
+                    
+//             }
+//         }
         
-        return jump(nums,0,dp);
+        return jump(nums,0,dp);//dp[nums.size()-1];//jump(nums,0,dp);
     }
 };
