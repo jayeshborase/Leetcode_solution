@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int maxAmt(vector<int> &nums, vector<int> &dp, int in){
+    int maxAmtdp(vector<int> &nums, vector<int> &dp, int in){
         if(in == 0)
             return nums[0];
         
@@ -10,20 +10,34 @@ public:
         if(dp[in] != -1)
             return dp[in];
         
-        int pick = nums[in] + maxAmt(nums,dp,in-2);
-        int nonpick = 0 + maxAmt(nums,dp,in-1);
+        int pick = nums[in] + maxAmtdp(nums,dp,in-2);
+        int nonpick = 0 + maxAmtdp(nums,dp,in-1);
 
         return dp[in] = max(pick,nonpick);
     }
-    int rob(vector<int>& nums) {
-        int si = nums.size();
-        //vector<int> dp(si,-1);
-        //dp[0] = nums[0];
+    
+    int maxAmttabu(vector<int> &nums, int in){
+        vector<int> dp(in,-1);
+        dp[0] = nums[0];
+        
+        for(int i = 1; i < in; i++){
+            
+            int pick = nums[i] + (i > 1 ? dp[i-2] : 0); 
+            int nonPick = 0 + dp[i-1];
+            
+            dp[i] = max(pick, nonPick); 
+        }
+        
+        return dp[in-1];
+    }
+    
+     int maxAmtspac(vector<int> &nums, int in){
         int pre1 = nums[0], pre2 = 0;
         int maxAmt = nums[0];
-        for(int i = 1; i < si; i++){
+
+        for(int i = 1; i < in; i++){
             
-            int pick = nums[i] + (i > 1 ? pre2 : 0); 
+            int pick = nums[i] + pre2; 
             int nonPick = 0 + pre1;
             
             maxAmt = max(pick, nonPick); 
@@ -31,6 +45,14 @@ public:
             pre2 = pre1;
             pre1 = maxAmt;
         }
-        return maxAmt;//dp[si-1];//maxAmt(nums,dp,si-1);
+        
+        return maxAmt;
+    }
+    int rob(vector<int>& nums) {
+        int si = nums.size();
+        
+        //return maxAmtdp(nums,dp,si-1);  
+        //return maxAmttapu(nums,si);
+        return maxAmtspac(nums,si);
     }
 };
