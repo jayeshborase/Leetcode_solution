@@ -17,18 +17,20 @@ public:
     }
     int rob(vector<int>& nums) {
         int si = nums.size();
-        vector<int> dp(si,-1);
-        dp[0] = nums[0];
-        int maxAmt = 0;
+        //vector<int> dp(si,-1);
+        //dp[0] = nums[0];
+        int pre1 = nums[0], pre2 = 0;
+        int maxAmt = nums[0];
         for(int i = 1; i < si; i++){
-            int pick = 0, nonPick = 0;
             
-            pick = nums[i] + (i > 1 ? dp[i-2] : 0);
+            int pick = nums[i] + (i > 1 ? pre2 : 0); 
+            int nonPick = 0 + pre1;
             
-            nonPick = 0 + dp[i-1];
+            maxAmt = max(pick, nonPick); 
             
-            dp[i] = max(pick, nonPick);   
+            pre2 = pre1;
+            pre1 = maxAmt;
         }
-        return dp[si-1];//maxAmt(nums,dp,si-1);
+        return maxAmt;//dp[si-1];//maxAmt(nums,dp,si-1);
     }
 };
