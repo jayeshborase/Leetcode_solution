@@ -2,6 +2,7 @@ class Solution {
 public:
     string removeKdigits(string num, int k) {
         deque<char> d;
+        
         int i = 0;
         while(i < num.length()){
             while(k != 0 && !d.empty()  && d.back() > num[i]){
@@ -17,8 +18,8 @@ public:
             k--;
             d.pop_back();
         }
-        string ans;
         
+        string ans; 
         while(!d.empty()){
             ans.push_back(d.front());
             d.pop_front();
